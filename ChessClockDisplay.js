@@ -124,7 +124,8 @@ class ChessClockDisplay extends Component{
     return (
       <View style={styles.container}>
         <TouchableHighlight onPress={() => p1 && !pause ? this.switch1() : null} 
-            underlayColor={p1 && !pause? '#dddddd' : '#ABA9AF'}>
+            underlayColor={p1 && !pause? '#dddddd' : '#ABA9AF'}
+            style={styles.boxContainer}>
           <View style={p1 && !pause ? styles.box : styles.disabledBox}>
             <Text style={styles.clockText}>
               {formatTime(this.state.player1Time)}
@@ -146,7 +147,8 @@ class ChessClockDisplay extends Component{
           </TouchableHighlight>
         </View>
         <TouchableHighlight onPress={() => !p1 && !pause ? this.switch2() : null} 
-            underlayColor={!p1 && !pause ? '#dddddd' : '#ABA9AF'}>
+            underlayColor={!p1 && !pause ? '#dddddd' : '#ABA9AF'} 
+            style={styles.boxContainer}>
           <View style={!p1  && !pause ? styles.box : styles.disabledBox}>
             <Text style={styles.clockText}>
              {formatTime(this.state.player2Time)}
@@ -174,33 +176,38 @@ function formatTime(time) {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30,
+    marginTop: 65,
     justifyContent: 'center',
     alignItems: 'stretch',
+    flexDirection:'column',
     backgroundColor: '#FFFCFF',
   },
   break: {
-    height:70,
+  	flex: .14,
     alignItems: 'center',
     justifyContent: 'space-around',
     flexDirection: 'row'
   },
+  boxContainer: { 
+  	flex: .4,
+    flexDirection: 'column',
+    alignItems: 'stretch'},
   box: {
-      height: 300,
-      backgroundColor: "#5CF9C4",
-      alignItems: 'center',
-      justifyContent: 'center'
+  	flex: 1,
+    backgroundColor: "#5CF9C4",
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   disabledBox : {
-      height : 300,
-      backgroundColor: "#ABA9AF",
-      alignItems: 'center',
-      justifyContent: 'center'
+    flex: 1,
+    backgroundColor: "#ABA9AF",
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   clockText: {
-      color: 'white',
-      fontSize: 75,
-      fontWeight: 'bold'
+    color: 'white',
+    fontSize: 75,
+    fontWeight: 'bold'
   },
   icon : {
     width: 50,

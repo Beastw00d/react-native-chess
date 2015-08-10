@@ -62,6 +62,7 @@ class TimeSettings extends Component {
 var styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		marginTop: 65,
 		paddingTop: 40,
 		paddingLeft: 40,
 		paddingRight: 40,
